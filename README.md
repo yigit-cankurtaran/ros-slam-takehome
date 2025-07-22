@@ -21,3 +21,6 @@ then ctrl+c and look at the frame_id line
   --remap /cloud_in:=/unilidar/cloud"
 
 laserscan by topic in rviz2, getting a pretty nice display
+
+# /odom doesn't exist
+- lost too much time trying to get /odom working, will need to get our own odometry from IMU + pointcloud
