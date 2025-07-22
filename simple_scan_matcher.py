@@ -13,6 +13,9 @@ class SimpleScanMatcher(Node):
     def __init__(self):
         super().__init__('simple_scan_matcher')
         
+        # IMPORTANT: Use simulation time
+        self.declare_parameter('use_sim_time', True)
+        
         # Publishers
         self.odom_pub = self.create_publisher(Odometry, '/odom', 10)
         self.tf_broadcaster = TransformBroadcaster(self)
@@ -88,14 +91,16 @@ class SimpleScanMatcher(Node):
         return dx, dy, dtheta
     
     def scan_callback(self, msg):
+        # Use the timestamp from the laser scan message (simulation time)
         current_time = self.get_clock().now()
+        scan_time = rclpy.time.Time.from_msg(msg.header.stamp)
         
         # Preprocess current scan
         current_ranges = self.preprocess_scan(msg)
         
         if self.prev_scan is not None and self.last_time is not None:
-            # Calculate time difference
-            dt = (current_time - self.last_time).nanoseconds / 1e9
+            # Calculate time difference using scan timestamps
+            dt = (scan_time - self.last_time).nanoseconds / 1e9
             
             if dt > 0.001:  # Avoid division by zero
                 # Estimate motion using simple scan matching
@@ -119,14 +124,14 @@ class SimpleScanMatcher(Node):
                 vth = dtheta / dt
                 
                 # Publish odometry
-                self.publish_odometry(current_time, vx, vy, vth)
+                self.publish_odometry(scan_time, vx, vy, vth)
                 
                 # Publish transform
-                self.publish_transform(current_time)
+                self.publish_transform(scan_time)
         
         # Store current scan and time
         self.prev_scan = current_ranges
-        self.last_time = current_time
+        self.last_time = scan_time
     
     def publish_odometry(self, stamp, vx, vy, vth):
         """Publish odometry message"""
