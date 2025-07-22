@@ -39,8 +39,8 @@ I used 6 terminals to run my project.
 - --rate 5.0: starts movement at 5x the original speed
 
 ### Terminal 2: PointCloud to LaserScan Conversion
-```python3 pointcloud_to_laserscan.py --ros-args \
-  --remap /cloud_in:=/unilidar/cloud```
+``python3 pointcloud_to_laserscan.py --ros-args \
+  --remap /cloud_in:=/unilidar/cloud``
 
 - Converts 3D point cloud data to 2D laser scan
 - Output: /scan topic
