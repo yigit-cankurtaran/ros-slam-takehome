@@ -26,8 +26,8 @@ def generate_launch_description():
                 'mode': 'mapping',
                 'debug_logging': False,
                 'throttle_scans': 2,
-                'minimum_travel_distance': 0.05,  # Very small movement
-                'minimum_travel_heading': 0.05,  # ~1 degree
+                'minimum_travel_distance': 0.01,  # Very small movement
+                'minimum_travel_heading': 0.005,  # ~1 degree
                 'scan_buffer_size': 50,
                 'scan_queue_size': 50,
             }]
