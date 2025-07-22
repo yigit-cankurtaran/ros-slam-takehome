@@ -24,3 +24,7 @@ laserscan by topic in rviz2, getting a pretty nice display
 
 # /odom doesn't exist
 - lost too much time trying to get /odom working, will need to get our own odometry from IMU + pointcloud
+
+"❯ ros2 topic echo /odom
+WARNING: topic [/odom] does not appear to be published yet
+Could not determine the type for the passed topic"
