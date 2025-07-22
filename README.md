@@ -13,3 +13,11 @@
 fixed frame was found with the command
 "ros2 topic echo /unilidar/cloud | head"
 then ctrl+c and look at the frame_id line
+
+# pointcloud to laserscan
+- normal package had versioning errors whatever i did, had to get my own solution
+
+- command is "python3 pointcloud_to_laserscan.py --ros-args \
+  --remap /cloud_in:=/unilidar/cloud"
+
+laserscan by topic in rviz2, getting a pretty nice display
