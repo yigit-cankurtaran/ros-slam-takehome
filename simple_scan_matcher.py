@@ -12,10 +12,6 @@ import math
 class SimpleScanMatcher(Node):
     def __init__(self):
         super().__init__('simple_scan_matcher')
-        
-        # IMPORTANT: Use simulation time
-        self.declare_parameter('use_sim_time', True)
-        
         # Publishers
         self.odom_pub = self.create_publisher(Odometry, '/odom', 10)
         self.tf_broadcaster = TransformBroadcaster(self)
