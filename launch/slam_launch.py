@@ -17,7 +17,7 @@ def generate_launch_description():
                 'map_frame': 'map',
                 'scan_topic': '/scan',
                 'resolution': 0.05,
-                'max_laser_range': 30.0,
+                'max_laser_range': 30.0,  # might be too high, could change it
                 'minimum_time_interval': 0.1,
                 'transform_timeout': 1.0,
                 'tf_buffer_duration': 30.0,
