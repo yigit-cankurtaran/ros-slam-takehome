@@ -1,5 +1,9 @@
 # My ROS2 SLAM Project
 
+A complete SLAM (Simultaneous Localization and Mapping) system built with ROS2 and SLAM Toolbox that creates detailed maps from 3D LiDAR data.
+
+![SLAM Map Overview](takehome/Screenshot%202025-07-22%20at%2021.11.25.png)
+
 - Implementing a complete SLAM system using ROS2 and SLAM Toolbox
 - I picked SLAM Toolbox because it's the most mature and actively maintained 2D SLAM package for ROS2, and ran perfectly on my machine
 
@@ -17,6 +21,9 @@ Data Source: ROS 2 bag file containing:
 - Static TF Publisher: Provides coordinate frame transforms
 
 I had to write the Custom components myself due to established packages (e.g. pointcloud-to-laserscan and hector SLAM) not running on my machine.
+
+### Custom Implementation Example
+![Custom Odometry Code](takehome/Screenshot%202025-07-22%20at%2021.26.51.png)
 
 System Requirements
 
@@ -115,9 +122,28 @@ RViz Not Showing Data:
 - Check topic names in display settings
 
 ## Results
+
+### Real-time 3D Point Cloud Visualization
+The system processes 3D point cloud data from the LiDAR sensor, converting it to 2D laser scans for SLAM processing:
+
+![Point Cloud Data](takehome/possiblefirstscreenshot.png)
+
+### Generated Laser Scan Data  
+The custom PointCloud-to-LaserScan converter creates clean 2D laser scan data:
+
+![Laser Scan Data](takehome/onlylaserscan.png)
+
+### Final SLAM Map Results
 The system successfully generates:
 
 - High-quality occupancy grid maps showing room layouts and corridors
-- Real-time robot trajectory visualization
+- Real-time robot trajectory visualization  
 - Consistent coordinate frame relationships
 - Loop closure detection for map accuracy
+
+![Complete SLAM Map](takehome/Screenshot%202025-07-22%20at%2021.11.25.png)
+
+### System Console Output
+SLAM Toolbox provides real-time feedback on map generation progress:
+
+![Console Output](takehome/Screenshot%202025-07-22%20at%2020.43.24.png)
